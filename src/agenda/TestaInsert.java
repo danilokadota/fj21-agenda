@@ -11,7 +11,7 @@ public class TestaInsert {
 		contato1.setEndereco("R. vergueiro 3185 cj87");
 		contato1.setDataNascimento(Calendar.getInstance());
 		
-		ContatoDao dao1 = new ContatoDao();
+		ContatoDao dao1 = new ContatoDao(null);
 		
 		dao1.adiciona(contato1);
 		
@@ -21,7 +21,7 @@ public class TestaInsert {
 		contato2.setEndereco("R. raiz amarela,356");
 		contato2.setDataNascimento(Calendar.getInstance());
 		
-		ContatoDao dao2 = new ContatoDao();
+		ContatoDao dao2 = new ContatoDao(null);
 		
 		dao2.adiciona(contato2);
 		

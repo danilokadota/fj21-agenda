@@ -2,6 +2,7 @@ package agenda;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,8 +56,9 @@ public class AdicionandoContatoServlet extends HttpServlet{
 		contato.setEndereco(endereco);
 		contato.setEmail(email);
 		contato.setDataNascimento(dataNascimento);
-		
-		ContatoDao dao = new ContatoDao();
+		Connection connection = (Connection) request
+                .getAttribute("conexao");
+		ContatoDao dao = new ContatoDao(connection);
 		dao.adiciona(contato);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("contatoAdicionado.jsp");

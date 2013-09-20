@@ -1,3 +1,4 @@
+<%@page import="java.sql.Connection"%>
 <%@page import="agenda.Contato"%>
 <%@page import="java.util.List"%>
 <%@page import="agenda.ContatoDao"%>
@@ -12,7 +13,9 @@
   <body>
     <table>
       <%
-      ContatoDao dao = new ContatoDao();
+      Connection connection = (Connection) request
+      .getAttribute("conexao");
+      ContatoDao dao = new ContatoDao(connection);
       List<Contato> contatos = dao.getLista();
       
       for (Contato contato : contatos ) {

@@ -1,5 +1,6 @@
 package agenda;
 
+import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -29,8 +30,10 @@ public class AlteraContatoLogic implements Logica {
         dataNascimento.setTime(date);
         
         contato.setDataNascimento(dataNascimento);
+        Connection connection = (Connection) request
+                .getAttribute("conexao");
         
-        ContatoDao dao = new ContatoDao();
+        ContatoDao dao = new ContatoDao(connection);
         dao.adiciona(contato);
 
         RequestDispatcher rd = request

@@ -11,10 +11,10 @@ import java.util.List;
 
 
 public class ContatoDao {
-	private final  Connection connection;
+	private final Connection connection;
 		
-	public ContatoDao(){
-		this.connection = new ConnectionFactory().getConnection();
+	public ContatoDao(Connection connection){
+		this.connection = connection;
 	}
 	
 	public void adiciona(Contato contato){
@@ -40,7 +40,7 @@ public class ContatoDao {
 		try{
 			List<Contato> contatos = new ArrayList<Contato>();
 			PreparedStatement stmt = this.connection.prepareStatement("select * from contatos");
-			ResultSet rs = (ResultSet) stmt.executeQuery();
+			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
 				Contato contato = new Contato();

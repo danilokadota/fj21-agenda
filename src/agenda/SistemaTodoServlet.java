@@ -1,6 +1,7 @@
 package agenda;
 
 import java.io.IOException;
+import java.sql.Connection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +15,9 @@ public class SistemaTodoServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String acao = request.getParameter("logica");
-		ContatoDao dao = new ContatoDao();
+		Connection connection = (Connection) request
+                .getAttribute("conexao");
+		ContatoDao dao = new ContatoDao(connection);
 		
 		if (acao.equals("AdiciocaContato")) {
 			Contato contato = new Contato();

@@ -64,4 +64,36 @@
     <url-pattern>/mvc</url-pattern>
 </servlet-mapping>
 
+
+<filter>
+    <filter-name>
+        cronometro
+    </filter-name>
+    <filter-class>
+       agenda.FiltroTempoDeExecucao
+    </filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>cronometro</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+<filter>
+  <filter-name>FiltroConexao</filter-name>
+  <filter-class>agenda.FiltroConexao</filter-class>
+</filter>
+
+<filter-mapping>
+  <filter-name>FiltroConexao</filter-name>
+  <url-pattern>/*</url-pattern>
+</filter-mapping>
+
+
+
+
+
+
+
+
 </web-app>
